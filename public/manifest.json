@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "J-Todo",
+  "name": "J-Tech-Todo",
   "scope": "/",
   "start_url": "/",
   "icons": [
@@ -22,6 +22,6 @@
   ],
 
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#3e3e51",
+  "background_color": "#3e3e51"
 }

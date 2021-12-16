@@ -22,4 +22,5 @@ export const Right = styled.div`
   align-items: center;
   gap: 0.2rem;
   margin-right: 0.5rem;
+  margin-top: 0.2rem;
 `
