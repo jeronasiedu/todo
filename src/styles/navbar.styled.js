@@ -9,7 +9,9 @@ export const NavBar = styled.div`
   padding-top: ${({ user }) => !user && 0};
   z-index: 3;
 `
-export const Left = styled.div``
+export const Left = styled.div`
+  text-transform: capitalize;
+`
 export const User = styled.h3`
   font-weight: ${({ theme }) => theme.font.w_normal};
   letter-spacing: 1px;
