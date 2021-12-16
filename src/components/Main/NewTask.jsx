@@ -44,6 +44,12 @@ const NewTask = ({
         when: 'afterChildren',
       },
     },
+    hover: {
+      scale: 1.1,
+    },
+    tap: {
+      scale: 0.9,
+    },
   }
   const childVariant = {
     hidden: {

@@ -13,7 +13,7 @@ body{
     padding:2rem;
     background-size: 100% 120%;
     animation: gradient 2s ease infinite;
-
+    font-display: optional;
     @media (max-width:620px){
         padding:0.2rem;
     }
