@@ -22,7 +22,7 @@ const Navbar = () => {
   const handleModal = () => {
     setOpenModal(true)
   }
-  const [name, setName] = useState('')
+  const [name, setName] = useState(user)
   const [open, setOpen] = useState(false)
   const handleClose = () => {
     setOpen(false)
@@ -42,6 +42,7 @@ const Navbar = () => {
     localStorage.setItem('username', name)
     setUser(name)
     handleClose()
+    setName('')
   }
   return (
     <NavBar>
