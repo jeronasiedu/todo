@@ -5,6 +5,7 @@ export const darkTheme = {
     tertiary: '#21212b',
     light: '#50506c',
     active: '#fda0a7',
+    hover: '#5b5b77',
   },
   color: {
     primary: '#fff',

@@ -52,6 +52,9 @@ export const List = styled(motion.li)`
   background: ${({ theme }) => theme.background.tertiary};
   margin-block: 0.4rem;
   border-radius: 0.4rem;
+  /* &:hover {
+    background: ${({ theme }) => theme.background.hover};
+  } */
 `
 export const Up = styled.p`
   position: relative;
