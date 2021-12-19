@@ -10,9 +10,8 @@ const GlobalStyles = createGlobalStyle`
 }
 body{
     background: linear-gradient(-135deg, #fda1a5,#f385c1,#23a6d5,#c365d1 );
-    padding:2rem;
+    padding:2rem ;
     background-size: 100% 120%;
-    animation: gradient 2s ease infinite;
     font-display: optional;
     @media (max-width:620px){
         padding:0.2rem;

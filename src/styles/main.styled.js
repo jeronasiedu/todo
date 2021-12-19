@@ -5,7 +5,7 @@ export const MainContainer = styled(motion.div)`
 `
 export const Container = styled.div`
   margin-inline: auto;
-  width: clamp(18rem, 80%, 38rem);
+  width: clamp(18rem, 88%, 38rem);
   margin-top: 2rem;
 `
 
@@ -37,12 +37,16 @@ export const TaskContainer = styled(motion.div)`
   margin-block: 2rem;
   height: 20rem;
   position: relative;
+  padding-right: 0.3rem;
   overflow: auto;
   font-family: 'Montserrat';
+  @media (max-width: 620px) {
+    height: 23rem;
+  }
 `
 
 export const NewTasks = styled(motion.ul)`
-  padding: 0.2rem;
+  padding: 0.15rem;
 `
 export const List = styled(motion.li)`
   display: flex;
@@ -52,9 +56,6 @@ export const List = styled(motion.li)`
   background: ${({ theme }) => theme.background.tertiary};
   margin-block: 0.4rem;
   border-radius: 0.4rem;
-  /* &:hover {
-    background: ${({ theme }) => theme.background.hover};
-  } */
 `
 export const Up = styled.p`
   position: relative;
@@ -78,6 +79,9 @@ export const Date = styled(motion.p)`
   font-size: 0.8rem;
   color: ${({ color }) => color};
   margin-left: auto;
+  @media (max-width: 540px) {
+    font-size: 0.7rem;
+  }
 `
 export const Left = styled.div``
 export const Middle = styled(motion.div)`
