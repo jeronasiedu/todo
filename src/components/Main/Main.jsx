@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import {
   MainContainer,
   Container,
@@ -19,11 +19,13 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { setItem, getItem } from '../../utils/helpers'
 import randomColor from 'randomcolor'
 import { v4 } from 'uuid'
+import { motion } from 'framer-motion'
 const Main = () => {
   const [todos, setTodos] = useState([])
   const [text, setText] = useState('')
   const [isEditing, setIsEditing] = useState(false)
   const [editItem, setEditItem] = useState({})
+  const [inputColor, setInputColor] = useState('')
   const [completed, setCompleted] = useState([])
   const navigate = useNavigate()
   const { name, id } = useParams()
@@ -44,6 +46,7 @@ const Main = () => {
     ])
     setText('')
   }
+  // getting completed todos on app load
   useEffect(() => {
     const items = getItem(`todosCategory-${id}`)
     items && setTodos(items)
@@ -54,6 +57,7 @@ const Main = () => {
       setCompleted(completedOnes)
     }
   }, [id])
+  // setting completed todos on state change on app load
   useEffect(() => {
     setItem(`todosCategory-${id}`, todos)
     const completedOnes = todos.filter((item) => {
@@ -61,13 +65,21 @@ const Main = () => {
     })
     setCompleted(completedOnes)
   }, [todos, id])
+  // getting inputColors from localStorage
+  useEffect(() => {
+    const color = localStorage.getItem(`design-${id}`)
+    setInputColor(color)
+  }, [id])
   const handleDelete = (id) => {
+    if (isEditing && editItem.id === id) {
+      return
+    }
     const newItems = todos.filter((item) => item.id !== id)
     setTodos(newItems)
   }
   const handleEdit = (item) => {
-    setEditItem(item)
     setIsEditing(true)
+    setEditItem(item)
   }
   const handleEditTodo = (e) => {
     e.preventDefault()
@@ -136,6 +148,7 @@ const Main = () => {
       },
     },
   }
+
   return (
     <MainContainer
       variants={mainContainerVariant}
@@ -151,27 +164,29 @@ const Main = () => {
           <Title>{name}</Title>
         </Header>
         {isEditing ? (
-          <InputContainer onSubmit={handleEditTodo}>
+          <InputContainer onSubmit={handleEditTodo} color={inputColor}>
             <Icon size="small" type="submit">
               <BiEdit color="violet" />
             </Icon>
             <Input
+              color={inputColor}
               placeholder="edit a task"
               spellCheck="false"
-              autoFocus
               value={editItem.text}
               onChange={(e) => {
                 setEditItem({ ...editItem, text: e.target.value })
               }}
               required
+              className="edit"
             />
           </InputContainer>
         ) : (
-          <InputContainer onSubmit={handleAddTodo}>
+          <InputContainer onSubmit={handleAddTodo} color={inputColor}>
             <Icon size="small" type="submit">
               <BiNote color="violet" />
             </Icon>
             <Input
+              color={inputColor}
               placeholder="add a task"
               spellCheck="false"
               value={text}
@@ -185,12 +200,15 @@ const Main = () => {
         <TaskContainer>
           {todos.length > 0 && (
             <Status variants={statusVariant} initial="hidden" animate="visible">
-              <Total>
-                tasks - <span className="tasks">{todos.length}</span>
+              <Total layout>
+                tasks -{' '}
+                <motion.span className="tasks">{todos.length}</motion.span>
               </Total>
-              <Total>
+              <Total layout>
                 completed -{' '}
-                <span className="completed">{completed.length}</span>
+                <motion.span layout className="completed">
+                  {completed.length}
+                </motion.span>
               </Total>
             </Status>
           )}

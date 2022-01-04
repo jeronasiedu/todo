@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { motion } from 'framer-motion'
 export const MainContainer = styled(motion.div)`
   height: 100%;
@@ -20,19 +20,32 @@ export const Title = styled.h3`
 `
 export const InputContainer = styled.form`
   width: 100%;
-  border-radius: 0.3rem;
-  border: 2px solid #1d1d26;
+  border-radius: 0.25rem;
+  border: 1px solid ${({ color }) => color};
   display: flex;
   padding: 0.2rem 0;
   height: 100%;
+  padding-right: 0.1em;
 `
+
 export const Input = styled.input`
+  padding-inline: 0.2em;
   flex: 1;
   background: none;
   color: ${({ theme }) => theme.color.primary};
   font-family: 'Montserrat';
   font-size: 1rem;
+  ::placeholder {
+    transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  &:focus::placeholder {
+    letter-spacing: 1px;
+    color: ${({ color }) => color};
+    font-weight: ${({ theme }) => theme.font.w_bold};
+    transform: translateX(1rem) skew(-30deg) rotateX(1deg);
+  }
 `
+
 export const TaskContainer = styled(motion.div)`
   margin-block: 2rem;
   height: 20rem;
@@ -100,7 +113,7 @@ export const Status = styled(motion.div)`
   justify-content: space-between;
   align-items: center;
 `
-export const Total = styled.p`
+export const Total = styled(motion.p)`
   text-transform: capitalize;
   span.tasks {
     color: ${({ theme }) => theme.color.tasks};

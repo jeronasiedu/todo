@@ -20,18 +20,22 @@ const Home = () => {
   const { user, openModal, handleCloseModal, setOpenModal } = useGlobalContext()
   const [text, setText] = useState('')
   const [data, setData] = useState([])
+  // adding category
   const handleAddingCategory = (e) => {
     e.preventDefault()
     setText('')
+    const design = randomColor()
+    const id = v4()
+    localStorage.setItem(`design-${id}`, design)
     setData([
       {
         name: text,
-        id: v4(),
+        id,
         color: randomColor({
           hue: 9,
           luminosity: 100,
         }),
-        design: randomColor(),
+        design,
       },
       ...data,
     ])
@@ -47,6 +51,7 @@ const Home = () => {
   const deleteCategory = (id) => {
     const newCat = data.filter((item) => item.id !== id)
     localStorage.removeItem(`todosCategory-${id}`)
+    localStorage.removeItem(`design-${id}`)
     setData(newCat)
   }
   const containerVariant = {

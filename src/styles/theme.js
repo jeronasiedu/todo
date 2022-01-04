@@ -17,5 +17,6 @@ export const darkTheme = {
   font: {
     w_normal: 400,
     w_light: 300,
+    w_bold: 500,
   },
 }

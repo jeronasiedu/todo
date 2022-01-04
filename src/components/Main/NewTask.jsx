@@ -12,7 +12,7 @@ import { Icon } from '../../styles/global.styled'
 import { Checkbox } from '@mui/material/'
 import { BiEdit, BiTrash, BiChevronDown } from 'react-icons/bi'
 import { AnimatePresence, motion } from 'framer-motion'
-import { parseISO, formatRelative } from 'date-fns'
+
 import { formatDate } from '../../utils/helpers'
 const NewTask = ({
   text,
