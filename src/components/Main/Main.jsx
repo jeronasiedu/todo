@@ -179,7 +179,6 @@ const Main = () => {
                 setText(e.target.value)
               }}
               required
-              autoFocus
             />
           </InputContainer>
         )}

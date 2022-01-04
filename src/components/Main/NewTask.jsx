@@ -13,6 +13,7 @@ import { Checkbox } from '@mui/material/'
 import { BiEdit, BiTrash, BiChevronDown } from 'react-icons/bi'
 import { AnimatePresence, motion } from 'framer-motion'
 import { parseISO, formatRelative } from 'date-fns'
+import { formatDate } from '../../utils/helpers'
 const NewTask = ({
   text,
   date,
@@ -71,7 +72,7 @@ const NewTask = ({
       opacity: 1,
       y: 0,
       transition: {
-        delay: 0.6,
+        delay: 0.3,
       },
     },
   }
@@ -79,6 +80,7 @@ const NewTask = ({
     setChecked(e.target.checked)
     handleCompleted()
   }
+  const formattedDate = formatDate(date)
   return (
     <List variants={listVariant} initial="hidden" animate="visible">
       <Left>
@@ -119,7 +121,7 @@ const NewTask = ({
                 <BiTrash color="#fc626c" />
               </Icon>
               <Date color={color} variants={childVariant}>
-                {formatRelative(parseISO(date), new window.Date())}
+                {formattedDate}
               </Date>
             </Down>
           )}
