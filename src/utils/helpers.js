@@ -7,9 +7,16 @@ export const setItem = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value))
 }
 export const formatDate = (date) => {
-  const oldDate = new Date(date).getMinutes()
-  const newDate = new Date().getMinutes()
-  if (newDate - oldDate > 30) {
+  let oldDate = new Date(date).getTime()
+  let newDate = new Date().getTime()
+  oldDate = oldDate.toString().slice(5, -5)
+  newDate = newDate.toString().slice(5, -5)
+  oldDate = Number(oldDate)
+  newDate = Number(newDate)
+  // console.log({ oldDate, newDate })
+  // console.log(newDate - oldDate)
+
+  if (newDate - oldDate > 15) {
     // if date is longer than 30 mins
     // format it like "today at 1:39 PM"
     const results = formatRelative(parseISO(date), new window.Date())

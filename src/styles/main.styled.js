@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import { motion } from 'framer-motion'
 export const MainContainer = styled(motion.div)`
   height: 100%;
@@ -41,8 +41,8 @@ export const Input = styled.input`
   &:focus::placeholder {
     letter-spacing: 1px;
     color: ${({ color }) => color};
-    font-weight: ${({ theme }) => theme.font.w_bold};
-    transform: translateX(1rem) skew(-30deg) rotateX(1deg);
+    transform: translate(0.2rem, -0.5rem);
+    font-size: 0.8rem;
   }
 `
 
@@ -74,7 +74,7 @@ export const Up = styled.p`
   position: relative;
   transition: 0.5s ease;
   &.marked {
-    color: gray;
+    color: #797986;
     text-decoration: line-through;
     text-decoration-color: ${({ bg }) => bg};
   }

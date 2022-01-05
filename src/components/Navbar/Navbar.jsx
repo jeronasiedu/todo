@@ -10,10 +10,11 @@ import {
 } from '../../styles/navbar.styled'
 import Avatar from 'react-nice-avatar'
 import { Icon } from '../../styles/global.styled'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useGlobalContext } from '../../GlobalContext'
 import { Modal } from '@mui/material'
 import { BiNote, BiCheck } from 'react-icons/bi'
+import { IoSettingsOutline } from 'react-icons/io5'
 import { motion } from 'framer-motion'
 const Navbar = () => {
   const { user, setOpenModal, setUser } = useGlobalContext()
@@ -43,6 +44,14 @@ const Navbar = () => {
     setUser(name)
     handleClose()
     setName('')
+  }
+  const navigate = useNavigate()
+  const handleNavigate = () => {
+    if (pathname === '/settings') {
+      navigate(-1)
+    } else {
+      navigate('/settings')
+    }
   }
   return (
     <NavBar>
@@ -95,6 +104,10 @@ const Navbar = () => {
             </ModalContent>
           </Modal>
           <Avatar style={{ width: '2.3rem', aspectRatio: '1' }} {...config} />
+
+          <Icon onClick={handleNavigate}>
+            <IoSettingsOutline />
+          </Icon>
         </Right>
       )}
     </NavBar>
