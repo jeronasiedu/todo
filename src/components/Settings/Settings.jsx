@@ -8,13 +8,21 @@ import {
   UserDetails,
   Input,
   FormContainer,
+  UserName,
+  ModalContent,
+  ModalInput,
+  InputContainer,
 } from '../../styles/settings.styled'
 import { Icon } from '../../styles/global.styled'
 import { useNavigate } from 'react-router-dom'
+import { Modal } from '@mui/material'
 import { MdArrowBackIos, MdPhotoCamera } from 'react-icons/md'
+import { BiCheck, BiUserPin } from 'react-icons/bi'
 import { IconButton } from '@mui/material'
 import Avatar from 'react-nice-avatar'
 import { useGlobalContext } from '../../GlobalContext'
+import { motion } from 'framer-motion'
+import { useState } from 'react'
 const Settings = ({ mode, setMode }) => {
   const navigate = useNavigate()
   const handleNavigate = () => {
@@ -40,7 +48,7 @@ const Settings = ({ mode, setMode }) => {
     },
   }
   const config = JSON.parse(localStorage.getItem('avatarConfig'))
-  const { profile, setProfile } = useGlobalContext()
+  const { profile, setProfile, user, setUser } = useGlobalContext()
   const handleProfileChange = (e) => {
     const image = e.target.files[0]
     const reader = new FileReader()
@@ -49,6 +57,28 @@ const Settings = ({ mode, setMode }) => {
       localStorage.setItem('profile-image', reader.result)
       setProfile(reader.result)
     })
+  }
+
+  const [username, setUsername] = useState(user)
+  const [open, setOpen] = useState(false)
+  const handleClose = () => {
+    setOpen(false)
+  }
+  const modalVariant = {
+    hidden: {
+      opacity: 0,
+      y: -200,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
+  }
+  const handleChangeName = (e) => {
+    e.preventDefault()
+    localStorage.setItem('username', username)
+    setUser(username)
+    handleClose()
   }
   return (
     <Container
@@ -101,8 +131,46 @@ const Settings = ({ mode, setMode }) => {
             </label>
           </FormContainer>
         </ImageContainer>
-        <UserDetails></UserDetails>
+        <UserDetails
+          onClick={() => {
+            setOpen(true)
+          }}
+        >
+          <UserName>{user}</UserName>
+          <Icon>
+            <BiUserPin />
+          </Icon>
+        </UserDetails>
       </Middle>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+        component={motion.div}
+        variants={modalVariant}
+        initial="hidden"
+        animate="visible"
+      >
+        <ModalContent>
+          <h4 id="modal-title">Change username</h4>
+          <InputContainer id="modal-description" onSubmit={handleChangeName}>
+            <ModalInput
+              type="text"
+              spellCheck="false"
+              value={username}
+              onChange={(e) => {
+                setUsername(e.target.value)
+              }}
+              required
+              autoFocus
+            />
+            <Icon type="submit">
+              <BiCheck />
+            </Icon>
+          </InputContainer>
+        </ModalContent>
+      </Modal>
     </Container>
   )
 }
