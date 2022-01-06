@@ -17,7 +17,7 @@ import { BiNote, BiCheck } from 'react-icons/bi'
 import { IoSettingsOutline } from 'react-icons/io5'
 import { motion } from 'framer-motion'
 const Navbar = () => {
-  const { user, setOpenModal, setUser } = useGlobalContext()
+  const { user, setOpenModal, setUser, profile } = useGlobalContext()
   const config = JSON.parse(localStorage.getItem('avatarConfig'))
   const { pathname } = useLocation()
   const handleModal = () => {
@@ -103,7 +103,21 @@ const Navbar = () => {
               </InputContainer>
             </ModalContent>
           </Modal>
-          <Avatar style={{ width: '2.3rem', aspectRatio: '1' }} {...config} />
+          {profile ? (
+            <img
+              src={profile}
+              alt="profile"
+              style={{
+                width: '2.4rem',
+                borderRadius: '50%',
+                objectFit: 'cover',
+                aspectRatio: '1',
+                transform: 'translateY(0.2rem)',
+              }}
+            />
+          ) : (
+            <Avatar style={{ width: '2.3rem', aspectRatio: '1' }} {...config} />
+          )}
 
           <Icon onClick={handleNavigate}>
             <IoSettingsOutline />

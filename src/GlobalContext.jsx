@@ -6,11 +6,14 @@ const GlobalContext = ({ children }) => {
     const item = localStorage.getItem('username')
     return item || false
   })
-
   const [openModal, setOpenModal] = useState(false)
   const handleCloseModal = () => {
     setOpenModal(false)
   }
+  const [profile, setProfile] = useState(() => {
+    const item = localStorage.getItem('profile-image')
+    return item || false
+  })
   return (
     <AppContext.Provider
       value={{
@@ -21,6 +24,8 @@ const GlobalContext = ({ children }) => {
         openModal,
         setOpenModal,
         handleCloseModal,
+        profile,
+        setProfile,
       }}
     >
       {' '}
