@@ -4,7 +4,6 @@ import { Icon } from '../../styles/global.styled'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useGlobalContext } from '../../GlobalContext'
 import { BiNote } from 'react-icons/bi'
-import { IoSettingsOutline } from 'react-icons/io5'
 const Navbar = () => {
   const { user, setOpenModal, profile } = useGlobalContext()
   const config = JSON.parse(localStorage.getItem('avatarConfig'))
@@ -43,15 +42,17 @@ const Navbar = () => {
                 objectFit: 'cover',
                 aspectRatio: '1',
                 transform: 'translateY(0.2rem)',
+                cursor: 'pointer',
               }}
+              onClick={handleNavigate}
             />
           ) : (
-            <Avatar style={{ width: '2.3rem', aspectRatio: '1' }} {...config} />
+            <Avatar
+              style={{ width: '2.3rem', aspectRatio: '1' }}
+              {...config}
+              onClick={handleNavigate}
+            />
           )}
-
-          <Icon onClick={handleNavigate}>
-            <IoSettingsOutline />
-          </Icon>
         </Right>
       )}
     </NavBar>

@@ -26,7 +26,7 @@ const lightTheme = {
     secondary: '#97a4c6',
     tertiary: '#97a4c6',
     light: '#50506c',
-    active: '#fda0a7',
+    active: '#3570d3',
     hover: '#5b5b77',
   },
   color: {

@@ -23,9 +23,12 @@ export const formatDate = (date) => {
   } else {
     // if date is less than an hour
     // format it like "6 mins ago"
-    const results = formatDistanceToNow(parseISO(date), {
+    let results = formatDistanceToNow(parseISO(date), {
       addSuffix: true,
     })
+    if (results === 'less than a minute ago') {
+      results = 'just now'
+    }
     return results
   }
 }

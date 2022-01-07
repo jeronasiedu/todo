@@ -4,13 +4,16 @@ import {
   Intro,
   Input,
 } from '../../styles/welcome.styled'
+import { useEffect } from 'react'
 import { Button } from '@mui/material'
 import { useState } from 'react'
 import { useGlobalContext } from '../../GlobalContext'
 import { genConfig } from 'react-nice-avatar'
+import randomColor from 'randomcolor'
 const Welcome = () => {
   const { setUser } = useGlobalContext()
   const [username, setUsername] = useState('')
+  const [color, setColor] = useState('')
   const handleSubmit = (e) => {
     e.preventDefault()
     localStorage.setItem('username', username)
@@ -66,6 +69,10 @@ const Welcome = () => {
       opacity: 0,
     },
   }
+  useEffect(() => {
+    const color = randomColor()
+    setColor(color)
+  }, [])
   return (
     <Container
       variants={containerVariant}
@@ -87,9 +94,16 @@ const Welcome = () => {
           onChange={(e) => {
             setUsername(e.target.value)
           }}
+          color={color}
           onSubmit={handleSubmit}
         />
-        <Button variant="outlined" size="small" color="warning" type="submit">
+        <Button
+          sx={{ mt: 3 }}
+          variant="outlined"
+          size="small"
+          color="warning"
+          type="submit"
+        >
           Let's move
         </Button>
       </FormContainer>

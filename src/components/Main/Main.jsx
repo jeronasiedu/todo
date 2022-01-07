@@ -20,6 +20,7 @@ import { setItem, getItem } from '../../utils/helpers'
 import randomColor from 'randomcolor'
 import { v4 } from 'uuid'
 import { motion } from 'framer-motion'
+import { useTheme } from 'styled-components'
 const Main = () => {
   const [todos, setTodos] = useState([])
   const [text, setText] = useState('')
@@ -27,6 +28,9 @@ const Main = () => {
   const [editItem, setEditItem] = useState({})
   const [inputColor, setInputColor] = useState('')
   const [completed, setCompleted] = useState([])
+  const {
+    background: { active },
+  } = useTheme()
   const navigate = useNavigate()
   const { name, id } = useParams()
   const handleNavigate = () => {
@@ -166,7 +170,7 @@ const Main = () => {
         {isEditing ? (
           <InputContainer onSubmit={handleEditTodo} color={inputColor}>
             <Icon size="small" type="submit">
-              <BiEdit color="violet" />
+              <BiEdit color={active} />
             </Icon>
             <Input
               color={inputColor}
@@ -183,7 +187,7 @@ const Main = () => {
         ) : (
           <InputContainer onSubmit={handleAddTodo} color={inputColor}>
             <Icon size="small" type="submit">
-              <BiNote color="violet" />
+              <BiNote color={active} />
             </Icon>
             <Input
               color={inputColor}

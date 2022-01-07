@@ -10,6 +10,7 @@ export const Container = styled(motion.section)`
 `
 export const Intro = styled(motion.div)`
   text-align: center;
+  font-family: 'montserrat';
   h1 {
     font-weight: ${({ theme }) => theme.font.w_normal};
     letter-spacing: 1px;
@@ -31,7 +32,7 @@ export const Input = styled.input`
   font-size: 1.1rem;
   border-radius: 0.3rem;
   background: none;
-  outline: 1px solid ${({ theme }) => theme.background.light};
+  outline: 1px solid ${({ color }) => color};
   color: ${({ theme }) => theme.color.primary};
   &:focus {
     outline: 1px solid ${({ theme }) => theme.background.active};

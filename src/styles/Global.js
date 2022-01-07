@@ -9,7 +9,7 @@ const GlobalStyles = createGlobalStyle`
     outline: none;
 }
 body{
-    background: linear-gradient(-135deg, #fda1a5,#f385c1,#23a6d5,#c365d1 );
+    background-image: linear-gradient(to right top, #0f3a73, #1e4582, #2b4f92, #375ba2, #4366b2, #496ebe, #5077c9, #567fd5, #5887de, #5b8ee8, #5d96f1, #5f9efb);
     padding:2rem ;
     background-size: 100% 120%;
     font-display: optional;

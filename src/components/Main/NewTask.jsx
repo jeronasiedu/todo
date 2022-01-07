@@ -12,7 +12,7 @@ import { Icon } from '../../styles/global.styled'
 import { Checkbox } from '@mui/material/'
 import { BiEdit, BiTrash, BiChevronDown } from 'react-icons/bi'
 import { AnimatePresence, motion } from 'framer-motion'
-
+import { useTheme } from 'styled-components'
 import { formatDate } from '../../utils/helpers'
 const NewTask = ({
   text,
@@ -81,6 +81,9 @@ const NewTask = ({
     handleCompleted()
   }
   const formattedDate = formatDate(date)
+  const {
+    background: { active },
+  } = useTheme()
   return (
     <List variants={listVariant} initial="hidden" animate="visible">
       <Left>
@@ -109,7 +112,7 @@ const NewTask = ({
                 variants={childVariant}
                 onClick={handleEdit}
               >
-                <BiEdit color="violet" />
+                <BiEdit color={active} />
               </Icon>
 
               <Icon

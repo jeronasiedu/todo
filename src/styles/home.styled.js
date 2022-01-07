@@ -68,7 +68,7 @@ export const Design = styled.div`
 `
 export const InputContainer = styled.form`
   width: 100%;
-  outline: 1px solid ${({ theme }) => theme.background.light};
+  outline: 1px solid ${({ theme }) => theme.background.active};
   display: flex;
   border-radius: 0.2rem;
 `
