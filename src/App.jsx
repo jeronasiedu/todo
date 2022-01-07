@@ -16,7 +16,7 @@ function App() {
   const location = useLocation()
   const { user } = useGlobalContext()
   const [mode, setMode] = useState(() => {
-    return localStorage.getItem('mode') || 'light'
+    return localStorage.getItem('mode') || 'dark'
   })
   useEffect(() => {
     localStorage.setItem('mode', mode)

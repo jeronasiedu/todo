@@ -53,7 +53,7 @@ export const Toggle = styled.div`
     transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
   .circle.light {
-    transform: translateX(calc(2.8rem - 1.3rem));
+    transform: translateX(calc(2.8rem - 1.35rem));
   }
 `
 export const Middle = styled.div`
