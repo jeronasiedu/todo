@@ -47,11 +47,17 @@ const Navbar = () => {
               onClick={handleNavigate}
             />
           ) : (
-            <Avatar
-              style={{ width: '2.3rem', aspectRatio: '1' }}
-              {...config}
+            <div
               onClick={handleNavigate}
-            />
+              style={{
+                cursor: 'pointer',
+              }}
+            >
+              <Avatar
+                style={{ width: '2.3rem', aspectRatio: '1' }}
+                {...config}
+              />
+            </div>
           )}
         </Right>
       )}
