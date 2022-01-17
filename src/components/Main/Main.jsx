@@ -236,6 +236,7 @@ const Main = () => {
                   handleCompleted={() => {
                     handleCompleted(item)
                   }}
+                  color={inputColor}
                 />
               )
             })}

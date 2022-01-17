@@ -11,6 +11,7 @@ import {
 import { Icon } from '../../styles/global.styled'
 import { Checkbox } from '@mui/material/'
 import { BiEdit, BiTrash, BiChevronDown } from 'react-icons/bi'
+import { MdNotificationAdd } from 'react-icons/md'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTheme } from 'styled-components'
 import { formatDate } from '../../utils/helpers'
@@ -113,6 +114,9 @@ const NewTask = ({
                 onClick={handleEdit}
               >
                 <BiEdit color={active} />
+              </Icon>
+              <Icon size="small" component={motion.div} variants={childVariant}>
+                <MdNotificationAdd color={color} />
               </Icon>
 
               <Icon
