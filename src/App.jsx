@@ -12,6 +12,8 @@ import Home from './components/Home/Home'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { useGlobalContext } from './GlobalContext'
 import { AnimatePresence } from 'framer-motion'
+import DateAdapter from '@mui/lab/AdapterDateFns'
+import LocalizationProvider from '@mui/lab/LocalizationProvider'
 function App() {
   const location = useLocation()
   const { user } = useGlobalContext()
@@ -23,24 +25,26 @@ function App() {
   }, [mode])
   const activeTheme = theme[mode]
   return (
-    <ThemeProvider theme={activeTheme}>
-      <Container>
-        <Navbar />
-        <Split>
-          <AnimatePresence exitBeforeEnter>
-            <Routes location={location} key={location.pathname}>
-              <Route path="/" element={user ? <Home /> : <Welcome />} />
-              <Route path="/category/:id/:name" element={<Main />} />
-              <Route
-                path="/settings"
-                element={<Settings mode={mode} setMode={setMode} />}
-              />
-            </Routes>
-          </AnimatePresence>
-        </Split>
-      </Container>
-      <GlobalStyles />
-    </ThemeProvider>
+    <LocalizationProvider dateAdapter={DateAdapter}>
+      <ThemeProvider theme={activeTheme}>
+        <Container>
+          <Navbar />
+          <Split>
+            <AnimatePresence exitBeforeEnter>
+              <Routes location={location} key={location.pathname}>
+                <Route path="/" element={user ? <Home /> : <Welcome />} />
+                <Route path="/category/:id/:name" element={<Main />} />
+                <Route
+                  path="/settings"
+                  element={<Settings mode={mode} setMode={setMode} />}
+                />
+              </Routes>
+            </AnimatePresence>
+          </Split>
+        </Container>
+        <GlobalStyles />
+      </ThemeProvider>
+    </LocalizationProvider>
   )
 }
 

@@ -5,6 +5,7 @@ import App from './App'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import GlobalContext from './GlobalContext.jsx'
 import { BrowserRouter } from 'react-router-dom'
+import 'react-datepicker/dist/react-datepicker.css'
 ReactDOM.render(
   <BrowserRouter>
     <GlobalContext>

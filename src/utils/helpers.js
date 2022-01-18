@@ -32,3 +32,21 @@ export const formatDate = (date) => {
     return results
   }
 }
+export const requestNotification = () => {
+  Notification.requestPermission().then((result) => {
+    if (result === 'granted') {
+      console.log('Notification was granted')
+    }
+  })
+}
+export function randomNotification() {
+  const notifTitle = 'This is the title'
+  const notifBody = `Notification body goes here`
+  const notifImg = `/logo.png`
+  const options = {
+    body: notifBody,
+    icon: notifImg,
+  }
+  new Notification(notifTitle, options)
+  setTimeout(randomNotification, 30000)
+}

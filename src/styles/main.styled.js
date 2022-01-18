@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
+import { ModalContent } from './settings.styled'
 export const MainContainer = styled(motion.div)`
   height: 100%;
 `
@@ -120,5 +121,13 @@ export const Total = styled(motion.p)`
   }
   span.completed {
     color: ${({ theme }) => theme.color.completed};
+  }
+`
+// DATE PICKER
+export const DateContent = styled(ModalContent)`
+  background: #fff;
+  div {
+    display: flex;
+    gap: 1.2rem;
   }
 `

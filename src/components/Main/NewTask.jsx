@@ -11,7 +11,7 @@ import {
 import { Icon } from '../../styles/global.styled'
 import { Checkbox } from '@mui/material/'
 import { BiEdit, BiTrash, BiChevronDown } from 'react-icons/bi'
-import { MdNotificationAdd } from 'react-icons/md'
+import { MdNotificationAdd, MdNotificationsActive } from 'react-icons/md'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useTheme } from 'styled-components'
 import { formatDate } from '../../utils/helpers'
@@ -23,6 +23,8 @@ const NewTask = ({
   handleEdit,
   handleCompleted,
   completed,
+  openDatePicker,
+  notify,
 }) => {
   const [expand, setExpand] = useState(false)
   const [checked, setChecked] = useState(completed)
@@ -84,6 +86,7 @@ const NewTask = ({
   const formattedDate = formatDate(date)
   const {
     background: { active },
+    color: { completed: completedColor },
   } = useTheme()
   return (
     <List variants={listVariant} initial="hidden" animate="visible">
@@ -115,8 +118,17 @@ const NewTask = ({
               >
                 <BiEdit color={active} />
               </Icon>
-              <Icon size="small" component={motion.div} variants={childVariant}>
-                <MdNotificationAdd color={color} />
+              <Icon
+                size="small"
+                component={motion.div}
+                variants={childVariant}
+                onClick={openDatePicker}
+              >
+                {notify ? (
+                  <MdNotificationsActive color={completedColor} />
+                ) : (
+                  <MdNotificationAdd color={color} />
+                )}
               </Icon>
 
               <Icon
