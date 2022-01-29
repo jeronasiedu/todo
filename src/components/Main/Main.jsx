@@ -290,7 +290,7 @@ const Main = () => {
                       setDateValue(new Date(item.notifyDate))
                     }
                   }}
-                  color={inputColor}
+                  inputColor={inputColor}
                 />
               )
             })}

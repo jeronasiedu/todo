@@ -25,6 +25,7 @@ const NewTask = ({
   completed,
   openDatePicker,
   notify,
+  inputColor,
 }) => {
   const [expand, setExpand] = useState(false)
   const [checked, setChecked] = useState(completed)
@@ -127,7 +128,7 @@ const NewTask = ({
                 {notify ? (
                   <MdNotificationsActive color={completedColor} />
                 ) : (
-                  <MdNotificationAdd color={color} />
+                  <MdNotificationAdd color={inputColor} />
                 )}
               </Icon>
 
