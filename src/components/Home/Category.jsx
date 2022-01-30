@@ -3,7 +3,6 @@ import { MdDeleteOutline } from 'react-icons/md'
 import { BiChevronsRight } from 'react-icons/bi'
 import { Icon } from '../../styles/global.styled'
 import { useNavigate } from 'react-router-dom'
-import { Tooltip } from '@mui/material'
 import { AnimatePresence } from 'framer-motion'
 const Category = ({ name, color, design, deleteCategory, id }) => {
   const navigate = useNavigate()
@@ -34,17 +33,13 @@ const Category = ({ name, color, design, deleteCategory, id }) => {
         initial="hidden"
         animate="visible"
       >
-        <Tooltip title="Delete" placement="left-end">
-          <Icon size="small" className="delete" onClick={deleteCategory}>
-            <MdDeleteOutline color={color} className="delete" />
-          </Icon>
-        </Tooltip>
+        <Icon size="small" className="delete" onClick={deleteCategory}>
+          <MdDeleteOutline color={color} className="delete" />
+        </Icon>
         <Name>{name}</Name>
-        <Tooltip title="Open" placement="right-end">
-          <Icon size="small" onClick={handleNavigation}>
-            <BiChevronsRight color={design} />
-          </Icon>
-        </Tooltip>
+        <Icon size="small" onClick={handleNavigation}>
+          <BiChevronsRight color={design} />
+        </Icon>
       </List>
     </AnimatePresence>
   )

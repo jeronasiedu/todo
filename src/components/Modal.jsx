@@ -6,6 +6,7 @@ const DeleteModal = ({
   showDeleteModal,
   setShowDeleteModal,
   setContinueDelete,
+  type = 'todo',
 }) => {
   const handleClose = () => {
     setShowDeleteModal(false)
@@ -33,7 +34,7 @@ const DeleteModal = ({
     >
       <ModalContent>
         <h4 id="modal-title">
-          Delete this todo?
+          Delete this {type}?
           <span
             style={{
               color: '#9a371b',

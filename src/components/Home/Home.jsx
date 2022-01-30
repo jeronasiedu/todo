@@ -16,10 +16,15 @@ import { useState, useEffect } from 'react'
 import { setItem, getItem } from '../../utils/helpers'
 import randomColor from 'randomcolor'
 import { motion } from 'framer-motion'
+import DeleteModal from '../Modal'
 const Home = () => {
   const { user, openModal, handleCloseModal, setOpenModal } = useGlobalContext()
   const [text, setText] = useState('')
   const [data, setData] = useState([])
+  const [showDeleteModal, setShowDeleteModal] = useState(false)
+  const [deleteModalText, setDeleteModalText] = useState('')
+  const [deleteItemId, setDeleteItemId] = useState(null)
+  const [continueDelete, setContinueDelete] = useState(false)
   // adding category
   const handleAddingCategory = (e) => {
     e.preventDefault()
@@ -48,11 +53,16 @@ const Home = () => {
   useEffect(() => {
     setItem('categories', data)
   }, [data])
+  // Delete Category
   const deleteCategory = (id) => {
     const newCat = data.filter((item) => item.id !== id)
     localStorage.removeItem(`todosCategory-${id}`)
     localStorage.removeItem(`design-${id}`)
     setData(newCat)
+  }
+  if (continueDelete) {
+    deleteCategory(deleteItemId)
+    setContinueDelete(false)
   }
   const containerVariant = {
     hidden: {
@@ -100,6 +110,13 @@ const Home = () => {
       animate="visible"
       exit="exit"
     >
+      <DeleteModal
+        showDeleteModal={showDeleteModal}
+        setShowDeleteModal={setShowDeleteModal}
+        todo={deleteModalText}
+        type="category"
+        setContinueDelete={setContinueDelete}
+      />
       {data.length < 1 && (
         <Up>
           <h3>Hi {user}</h3>
@@ -142,7 +159,9 @@ const Home = () => {
               {...item}
               custom={key}
               deleteCategory={() => {
-                deleteCategory(item.id)
+                setDeleteModalText(item.name)
+                setShowDeleteModal(true)
+                setDeleteItemId(item.id)
               }}
             />
           )
