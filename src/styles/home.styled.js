@@ -41,7 +41,7 @@ export const List = styled(motion.li)`
   margin-inline: auto;
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem 0.3rem;
+  padding: 0.3rem;
   align-items: center;
   margin-block: 0.5rem;
   border-radius: 0.4rem;

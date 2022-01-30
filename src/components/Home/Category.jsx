@@ -33,12 +33,12 @@ const Category = ({ name, color, design, deleteCategory, id }) => {
         initial="hidden"
         animate="visible"
       >
-        <Icon size="small" className="delete" onClick={deleteCategory}>
-          <MdDeleteOutline color={color} className="delete" />
+        <Icon className="delete" onClick={deleteCategory}>
+          <MdDeleteOutline color={color} className="delete" size={18} />
         </Icon>
         <Name>{name}</Name>
-        <Icon size="small" onClick={handleNavigation}>
-          <BiChevronsRight color={design} />
+        <Icon onClick={handleNavigation}>
+          <BiChevronsRight color={design} size={18} />
         </Icon>
       </List>
     </AnimatePresence>
