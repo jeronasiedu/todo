@@ -17,18 +17,14 @@ import { MdArrowBackIos } from 'react-icons/md'
 import { BiNote, BiEdit } from 'react-icons/bi'
 import NewTask from './NewTask'
 import { useParams, useNavigate } from 'react-router-dom'
-import {
-  setItem,
-  getItem,
-  randomNotification,
-  requestNotification,
-} from '../../utils/helpers'
+import { setItem, getItem } from '../../utils/helpers'
 import randomColor from 'randomcolor'
 import { v4 } from 'uuid'
 import { motion } from 'framer-motion'
 import { useTheme } from 'styled-components'
 import { Modal, TextField, Button } from '@mui/material'
 import MobileDateTimePicker from '@mui/lab/MobileDateTimePicker'
+import DeleteModal from '../Modal'
 const Main = () => {
   const [todos, setTodos] = useState([])
   const [text, setText] = useState('')
@@ -39,6 +35,10 @@ const Main = () => {
   const [open, setOpen] = useState(false)
   const [dateValue, setDateValue] = useState(new Date())
   const [activeTaskModal, setActiveTaskModal] = useState({})
+  const [showDeleteModal, setShowDeleteModal] = useState(false)
+  const [deleteModalText, setDeleteModalText] = useState('')
+  const [continueDelete, setContinueDelete] = useState(false)
+  const [deleteItemId, setDeleteItemId] = useState(null)
   const handleClose = () => {
     setOpen(false)
     setActiveTaskModal({})
@@ -92,12 +92,18 @@ const Main = () => {
     const color = localStorage.getItem(`design-${id}`)
     setInputColor(color)
   }, [id])
+  // HANDLE DELETE
   const handleDelete = (id) => {
     if (isEditing && editItem.id === id) {
       return
     }
     const newItems = todos.filter((item) => item.id !== id)
     setTodos(newItems)
+    setShowDeleteModal(false)
+    setContinueDelete(false)
+  }
+  if (continueDelete) {
+    handleDelete(deleteItemId)
   }
   // handle Edit todo
   const handleEdit = (item) => {
@@ -207,6 +213,12 @@ const Main = () => {
       animate="animate"
       exit="exit"
     >
+      <DeleteModal
+        showDeleteModal={showDeleteModal}
+        setShowDeleteModal={setShowDeleteModal}
+        todo={deleteModalText}
+        setContinueDelete={setContinueDelete}
+      />
       <Container>
         <Header>
           <Icon size="small" onClick={handleNavigate}>
@@ -275,7 +287,9 @@ const Main = () => {
                   key={key}
                   {...item}
                   handleDelete={() => {
-                    handleDelete(item.id)
+                    setDeleteModalText(item.text)
+                    setShowDeleteModal(true)
+                    setDeleteItemId(item.id)
                   }}
                   handleEdit={() => {
                     handleEdit(item)
