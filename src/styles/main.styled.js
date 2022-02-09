@@ -22,7 +22,7 @@ export const Title = styled.h3`
 export const InputContainer = styled.form`
   width: 100%;
   border-radius: 0.25rem;
-  border: 1px solid ${({ color }) => color};
+  border: 1px solid ${({ color }) => color || '#ea4fb9'};
   display: flex;
   padding: 0.2rem 0;
   height: 100%;
@@ -34,7 +34,7 @@ export const Input = styled.input`
   flex: 1;
   background: none;
   color: ${({ theme }) => theme.color.primary};
-  font-family: 'Montserrat';
+
   font-size: 1rem;
   ::placeholder {
     transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -53,7 +53,7 @@ export const TaskContainer = styled(motion.div)`
   position: relative;
   padding-right: 0.3rem;
   overflow: auto;
-  font-family: 'Montserrat';
+
   @media (max-width: 620px) {
     height: 23rem;
   }
@@ -74,6 +74,8 @@ export const List = styled(motion.li)`
 export const Up = styled.p`
   position: relative;
   transition: 0.5s ease;
+  font-family: 'poppins', 'sans serif';
+
   &.marked {
     color: #797986;
     text-decoration: line-through;

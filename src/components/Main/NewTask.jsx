@@ -39,13 +39,13 @@ const NewTask = ({
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
+        staggerChildren: 0.15,
       },
     },
     exit: {
       opacity: 0,
       transition: {
-        staggerChildren: 0.3,
+        staggerChildren: 0.15,
         when: 'afterChildren',
       },
     },

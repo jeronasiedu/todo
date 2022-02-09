@@ -20,8 +20,8 @@ export const Up = styled.div`
     }
   }
   p {
-    font-family: 'Montserrat';
     font-size: 0.9rem;
+    font-family: 'poppins', 'sans serif';
   }
 `
 export const Categories = styled(motion.ul)`
@@ -35,7 +35,6 @@ export const Categories = styled(motion.ul)`
 `
 
 export const List = styled(motion.li)`
-  font-family: 'poppins';
   width: 80%;
   max-width: 16rem;
   margin-inline: auto;
@@ -75,7 +74,6 @@ export const InputContainer = styled.form`
 export const Input = styled.input`
   padding: 0.2rem 0.3rem;
   width: 100%;
-  font-family: inherit;
   font-weight: ${({ theme }) => theme.font.w_light};
   font-size: 1.1rem;
   border-radius: 0.3rem;
@@ -95,7 +93,6 @@ export const ModalContent = styled.div`
   background: ${({ theme }) => theme.background.secondary};
   border-radius: 0.3rem;
   padding: 0.4rem;
-  font-family: 'poppins';
   display: flex;
   flex-direction: column;
   align-items: center;

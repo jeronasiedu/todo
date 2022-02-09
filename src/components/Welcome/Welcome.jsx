@@ -1,19 +1,20 @@
 import {
   Container,
   FormContainer,
-  Intro,
+  LoginContainer,
+  Button,
   Input,
 } from '../../styles/welcome.styled'
-import { useEffect } from 'react'
-import { Button } from '@mui/material'
-import { useState } from 'react'
 import { useGlobalContext } from '../../GlobalContext'
+import { BsPerson } from 'react-icons/bs'
+import { motion } from 'framer-motion'
 import { genConfig } from 'react-nice-avatar'
-import randomColor from 'randomcolor'
+import { useState } from 'react'
 const Welcome = () => {
-  const { setUser } = useGlobalContext()
   const [username, setUsername] = useState('')
-  const [color, setColor] = useState('')
+  const { setUser } = useGlobalContext()
+
+  // HANDLE SIGN IN
   const handleSubmit = (e) => {
     e.preventDefault()
     localStorage.setItem('username', username)
@@ -22,6 +23,7 @@ const Welcome = () => {
     setUsername('')
     localStorage.setItem('avatarConfig', JSON.stringify(config))
   }
+  // google sign
   const containerVariant = {
     hidden: {
       opacity: 0,
@@ -33,46 +35,30 @@ const Welcome = () => {
       opacity: 0,
     },
   }
-  const introVariant = {
-    hidden: {
-      opacity: 0,
-      scale: 0,
-    },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 1.3,
-      },
-    },
-    exit: {
-      y: 0,
-      opacity: 0,
-    },
-  }
 
+  // ANIMATION FOR FORM VARIANT
   const formVariant = {
     hidden: {
       opacity: 0,
-      scale: 2,
     },
     visible: {
       opacity: 1,
-      scale: 1,
       transition: {
-        duration: 1,
-        delay: 0.3,
+        staggerChildren: 0.5,
       },
     },
-    exit: {
-      x: 0,
+  }
+  const childVariant = {
+    hidden: {
       opacity: 0,
     },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.4,
+      },
+    },
   }
-  useEffect(() => {
-    const color = randomColor()
-    setColor(color)
-  }, [])
   return (
     <Container
       variants={containerVariant}
@@ -80,33 +66,32 @@ const Welcome = () => {
       animate="visible"
       exit="exit"
     >
-      <Intro variants={introVariant}>
-        <h1>Hi there</h1>
-        <p>let's start simple</p>
-      </Intro>
-      <FormContainer onSubmit={handleSubmit} variants={formVariant}>
-        <Input
-          type="text"
-          placeholder="username"
-          required
-          spellCheck="false"
-          value={username}
-          onChange={(e) => {
-            setUsername(e.target.value)
-          }}
-          color={color}
-          onSubmit={handleSubmit}
-        />
-        <Button
-          sx={{ mt: 3 }}
-          variant="outlined"
-          size="small"
-          color="warning"
-          type="submit"
-        >
-          Let's move
-        </Button>
-      </FormContainer>
+      <LoginContainer variants={formVariant} initial="hidden" animate="visible">
+        <motion.div className="logo" variants={childVariant}>
+          <img src="/pwa-192x192.png" alt="logo" />
+        </motion.div>
+
+        <motion.h2 variants={childVariant}>Welcome back!</motion.h2>
+        <motion.div className="intro" variants={childVariant}>
+          <p>Let's help you take off smoothly</p>
+          <p>Log in with your username to get started.</p>
+        </motion.div>
+        <FormContainer variants={childVariant} onSubmit={handleSubmit}>
+          <Input
+            type="text"
+            placeholder="Username"
+            required
+            spellCheck="false"
+            variants={childVariant}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <BsPerson size={22} className="person-icon" />
+          <Button variants={childVariant} type="submit" className="outline">
+            Continue
+          </Button>
+        </FormContainer>
+      </LoginContainer>
     </Container>
   )
 }

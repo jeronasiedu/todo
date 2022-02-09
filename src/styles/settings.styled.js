@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 export const Container = styled(motion.section)`
-  font-family: montserrat, ariel;
   padding: 0.3em;
 `
 export const Up = styled.section`
@@ -22,6 +21,8 @@ export const Toggle = styled.div`
     display: flex;
     align-items: center;
     padding-inline: 0.1rem;
+    font-family: 'poppins', 'sans serif';
+
     &::before {
       content: attr(data-text);
       position: absolute;
@@ -94,6 +95,7 @@ export const UserDetails = styled.div`
 export const UserName = styled.h3`
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-family: 'poppins', 'sans serif';
   font-weight: ${({ theme }) => theme.font.w_normal};
 `
 // MODAL
@@ -106,7 +108,7 @@ export const ModalContent = styled.div`
   background: ${({ theme }) => theme.background.secondary};
   border-radius: 0.3rem;
   padding: 0.4rem;
-  font-family: 'poppins';
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -121,7 +123,6 @@ export const InputContainer = styled.form`
 export const ModalInput = styled.input`
   padding: 0.2rem 0.3rem;
   width: 100%;
-  font-family: inherit;
   font-weight: ${({ theme }) => theme.font.w_light};
   font-size: 1.1rem;
   border-radius: 0.3rem;

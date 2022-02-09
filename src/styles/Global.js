@@ -7,6 +7,9 @@ const GlobalStyles = createGlobalStyle`
     list-style: none;
     border: none;
     outline: none;
+    font-family:'satisfy','poppins','sans serif';
+    scrollbar-width:none;
+
 }
 body{
     background-image: linear-gradient(to right top, #0f3a73, #1e4582, #2b4f92, #375ba2, #4366b2, #496ebe, #5077c9, #567fd5, #5887de, #5b8ee8, #5d96f1, #5f9efb);
@@ -16,10 +19,14 @@ body{
     @media (max-width:620px){
         padding:0.2rem;
     }
-    font-family:'charm', 'san-serif';
-
 }
 
+button,input{
+  font-family: inherit;
+}
+input{
+  font-family: 'poppins', 'sans serif';
+}
 p,h4{
     color: ${({ theme }) => theme.color.secondary};
 }
