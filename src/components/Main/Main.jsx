@@ -20,7 +20,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { setItem, getItem } from '../../utils/helpers'
 import randomColor from 'randomcolor'
 import { v4 } from 'uuid'
-import { motion } from 'framer-motion'
+import { motion, Reorder } from 'framer-motion'
 import { useTheme } from 'styled-components'
 import { Modal, TextField, Button } from '@mui/material'
 import MobileDateTimePicker from '@mui/lab/MobileDateTimePicker'
@@ -280,11 +280,15 @@ const Main = () => {
             variants={newTaskVariant}
             initial="hidden"
             animate="visible"
+            values={todos}
+            onReorder={setTodos}
+            axis="y"
           >
             {todos.map((item, key) => {
               return (
                 <NewTask
                   key={key}
+                  item={item}
                   {...item}
                   handleDelete={() => {
                     setDeleteModalText(item.text)

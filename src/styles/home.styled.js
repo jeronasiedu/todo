@@ -53,7 +53,10 @@ export const List = styled(motion.li)`
 
   cursor: pointer;
 `
-export const Name = styled.h4``
+export const Name = styled.h4`
+  flex: 1;
+  text-align: center;
+`
 export const Icon = styled.div``
 export const Design = styled.div`
   width: 1.2rem;

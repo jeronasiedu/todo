@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { motion } from 'framer-motion'
+import { motion, Reorder } from 'framer-motion'
 import { ModalContent } from './settings.styled'
 export const MainContainer = styled(motion.div)`
   height: 100%;
@@ -59,10 +59,10 @@ export const TaskContainer = styled(motion.div)`
   }
 `
 
-export const NewTasks = styled(motion.ul)`
+export const NewTasks = styled(Reorder.Group)`
   padding: 0.15rem;
 `
-export const List = styled(motion.li)`
+export const List = styled(Reorder.Item)`
   display: flex;
   align-items: center;
   width: 100%;
@@ -95,6 +95,7 @@ export const Date = styled(motion.p)`
   font-size: 0.8rem;
   color: ${({ color }) => color};
   margin-left: auto;
+  font-family: 'poppins', 'sans serif';
   @media (max-width: 540px) {
     font-size: 0.7rem;
   }

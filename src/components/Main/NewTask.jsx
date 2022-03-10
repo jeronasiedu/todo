@@ -26,6 +26,7 @@ const NewTask = ({
   openDatePicker,
   notify,
   inputColor,
+  item,
 }) => {
   const [expand, setExpand] = useState(false)
   const [checked, setChecked] = useState(completed)
@@ -90,7 +91,12 @@ const NewTask = ({
     color: { completed: completedColor },
   } = useTheme()
   return (
-    <List variants={listVariant} initial="hidden" animate="visible">
+    <List
+      variants={listVariant}
+      initial="hidden"
+      animate="visible"
+      value={item}
+    >
       <Left>
         <Checkbox
           value="check"
