@@ -13,6 +13,7 @@ const Category = ({ name, color, design, deleteCategory, id }) => {
       navigate(`/category/${id}/${name}`)
     }
   }
+
   const listVariant = {
     hidden: {
       opacity: 0,
@@ -25,6 +26,7 @@ const Category = ({ name, color, design, deleteCategory, id }) => {
       rotateY: 0,
     },
   }
+
   return (
     <AnimatePresence>
       <List variants={listVariant} initial="hidden" animate="visible">

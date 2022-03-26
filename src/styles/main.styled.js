@@ -107,7 +107,7 @@ export const Middle = styled(motion.div)`
 export const Right = styled.div`
   margin-left: auto;
   align-self: flex-start;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
   &.rotate {
     transform: rotate(180deg);
   }
