@@ -16,7 +16,7 @@ export const FormContainer = styled(motion.form)`
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  width: 75%;
+  width: min(90%, 25rem);
   margin-top: 0.4rem;
   .person-icon {
     position: absolute;
@@ -88,7 +88,7 @@ export const Button = styled(motion.button)`
   font-size: 0.9rem;
   text-transform: uppercase;
   width: 100%;
-  min-width: 19rem;
+  /* min-width: 19rem; */
   font-family: 'montserrat', 'sans serif';
 
   letter-spacing: 1px;
