@@ -74,7 +74,7 @@ const Welcome = () => {
         <motion.h2 variants={childVariant}>Hey there!</motion.h2>
         <motion.div className="intro" variants={childVariant}>
           <p>Let's help you take off smoothly</p>
-          <p>Log in with your username to get started.</p>
+          <p>Create a username to get started.</p>
         </motion.div>
         <FormContainer variants={childVariant} onSubmit={handleSubmit}>
           <Input
