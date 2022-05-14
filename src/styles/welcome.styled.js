@@ -27,7 +27,7 @@ export const FormContainer = styled(motion.form)`
   }
 `
 export const Input = styled(motion.input)`
-  padding: 0.3rem 0.4rem;
+  padding: 0.4rem;
   padding-right: 1.5rem;
   border-radius: 0.2rem;
   font-size: 1rem;
@@ -83,7 +83,7 @@ export const LoginContainer = styled(motion.div)`
 // BUTTON
 export const Button = styled(motion.button)`
   cursor: pointer;
-  padding: 0.4rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 0.2rem;
   font-size: 0.9rem;
   text-transform: uppercase;

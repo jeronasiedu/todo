@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { motion, Reorder } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ModalContent } from './settings.styled'
 export const MainContainer = styled(motion.div)`
   height: 100%;
@@ -59,10 +59,10 @@ export const TaskContainer = styled(motion.div)`
   }
 `
 
-export const NewTasks = styled(Reorder.Group)`
+export const NewTasks = styled(motion.ul)`
   padding: 0.15rem;
 `
-export const List = styled(Reorder.Item)`
+export const List = styled(motion.li)`
   display: flex;
   align-items: center;
   width: 100%;

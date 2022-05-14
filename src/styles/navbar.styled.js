@@ -17,6 +17,7 @@ export const User = styled.h3`
   letter-spacing: 1px;
   margin-left: 0.5rem;
   cursor: default;
+  font-family: 'poppins', 'sans-serif', 'system-ui';
 `
 export const Right = styled.div`
   display: flex;
